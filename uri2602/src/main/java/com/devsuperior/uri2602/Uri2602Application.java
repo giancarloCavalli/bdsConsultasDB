@@ -27,7 +27,16 @@ public class Uri2602Application implements CommandLineRunner {
 		
 		List<CustomerMinProjection> list = customerRepository.search1("RS");
 		List<CustomerMinDTO> result1 = list.stream().map(x -> new CustomerMinDTO(x)).collect(Collectors.toList());
+		
+		System.out.println("\n*** SQL Result");
 		for (CustomerMinDTO dto : result1) {
+			System.out.println(dto);
+		}
+		System.out.println("\n\n");
+		
+		List<CustomerMinDTO> result2 = customerRepository.search2("RS");
+		System.out.println("\n*** JPQL Result");
+		for (CustomerMinDTO dto : result2) {
 			System.out.println(dto);
 		}
 	}
